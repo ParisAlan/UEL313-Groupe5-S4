@@ -36,4 +36,18 @@
     </table>
 
     <a href="{{ path('app_liens_new') }}">Create new</a>
+
+    <br><br>
+
+    {# Bouton vers la connexion visible seulement si pas connecté #}
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('app_logout') }}" class="btn btn-warning">Déconnexion</a>
+        {% else %}
+            <a href="{{ path('app_login') }}" class="btn btn-warning">Connexion</a>
+    {% endif %}
+
+    {# Bouton vers l’admin visible seulement si connecté et ROLE_ADMIN #}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_admin') }}" class="btn btn-warning">Administration</a>
+    {% endif %}
 {% endblock %}
