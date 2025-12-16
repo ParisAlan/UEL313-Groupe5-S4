@@ -10,10 +10,12 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class UserFixtures extends Fixture
 {
     private UserPasswordHasherInterface $passwordHasher;
+    // Faire très attention de bien hash les mots de passe
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
+        // Faire très attention de bien hash les mots de passe
     }
 
     public function load(ObjectManager $manager): void
