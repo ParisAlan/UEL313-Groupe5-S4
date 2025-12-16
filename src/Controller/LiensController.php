@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/liens')]
+#[Route('/admin/liens')]
 final class LiensController extends AbstractController
 {
     #[Route(name: 'app_liens_index', methods: ['GET'])]
