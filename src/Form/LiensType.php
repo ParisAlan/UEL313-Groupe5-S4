@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Motcle;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class LiensType extends AbstractType
 {
@@ -23,7 +24,13 @@ class LiensType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
                 'label' => 'Sélectionnez les tags'
+            ])
+            ->add('nouveau_tag_texte', TextType::class, [
+                'mapped' => false, 
+                'required' => false,
+                'label' => 'Vous pouvez créer un nouveau tag si vous ne le trouvez pas dans la liste au dessus'
             ]);
+            
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Entity\Motcle;
 
 #[Route('/admin/liens')]
 final class LiensController extends AbstractController
@@ -30,6 +31,10 @@ final class LiensController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $nomNouveauTag = $form->get('nouveau_tag_texte')->getData();
+            if ($nomNouveauTag) {
+                $this->gererNouveauTag($nomNouveauTag, $lien, $entityManager);
+            }
             $entityManager->persist($lien);
             $entityManager->flush();
 
@@ -57,6 +62,10 @@ final class LiensController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $nomNouveauTag = $form->get('nouveau_tag_texte')->getData();
+            if ($nomNouveauTag) {
+                $this->gererNouveauTag($nomNouveauTag, $lien, $entityManager);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('app_liens_index', [], Response::HTTP_SEE_OTHER);
@@ -78,11 +87,26 @@ final class LiensController extends AbstractController
 
         return $this->redirectToRoute('app_liens_index', [], Response::HTTP_SEE_OTHER);
     }
+    
+    #[Route('/tag/{id}', name: 'app_liens_par_tag', methods: ['GET'])]
     public function parTag(\App\Entity\Motcle $motcle): Response
     {
     return $this->render('liens/index.html.twig', [
         'liens' => $motcle->getLiens(), 
         'tag_actif' => $motcle,
     ]);
+    }
+    private function gererNouveauTag(string $nom, Liens $lien, EntityManagerInterface $em): void
+    {
+        $tagExistant = $em->getRepository(Motcle::class)->findOneBy(['name' => $nom]);
+
+        if ($tagExistant) {
+            $lien->addMotcle($tagExistant);
+        } else {
+            $nouveauTag = new Motcle();
+            $nouveauTag->setName($nom);
+            $em->persist($nouveauTag);
+            $lien->addMotcle($nouveauTag);
+        }
     }
 }
