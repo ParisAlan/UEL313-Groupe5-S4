@@ -9,9 +9,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Lien_url</th>
-                <th>Lien_titre</th>
-                <th>Lien_desc</th>
+                <th>titre</th>
+                <th>description</th>
+                <th>url</th>
                 <th>Tags</th>
                 <th>actions</th>
             </tr>
@@ -20,9 +20,9 @@
         {% for lien in liens %}
             <tr>
                 <td>{{ lien.id }}</td>
-                <td>{{ lien.lienUrl }}</td>
                 <td>{{ lien.lienTitre }}</td>
                 <td>{{ lien.lienDesc }}</td>
+                <td>{{ lien.lienUrl }}</td>
                 <td>
                     {% for tag in lien.motcles %}
                         <a href="{{ path('app_liens_par_tag', {'id': tag.id}) }}" class="badge bg-primary text-decoration-none">
