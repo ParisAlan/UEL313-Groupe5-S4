@@ -12,6 +12,7 @@
                 <th>Lien_url</th>
                 <th>Lien_titre</th>
                 <th>Lien_desc</th>
+                <th>Tags</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,13 +24,22 @@
                 <td>{{ lien.lienTitre }}</td>
                 <td>{{ lien.lienDesc }}</td>
                 <td>
+                    {% for tag in lien.motcles %}
+                        <a href="{{ path('app_liens_par_tag', {'id': tag.id}) }}" class="badge bg-primary text-decoration-none">
+                            #{{ tag.name }}
+                        </a>
+                    {% else %}
+                        <small class="text-muted">Aucun tag trouver</small>
+                    {% endfor %}
+                </td>
+                <td>
                     <a href="{{ path('app_liens_show', {'id': lien.id}) }}">show</a>
                     <a href="{{ path('app_liens_edit', {'id': lien.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
