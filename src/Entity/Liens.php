@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\LiensRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: LiensRepository::class)]
 class Liens
@@ -22,6 +24,14 @@ class Liens
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $lien_desc = null;
+
+    #[ORM\ManyToMany(targetEntity: Motcle::class, inversedBy: 'liens')]
+    private Collection $motcles;
+
+    public function __construct()
+    {
+        $this->motcles = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -61,6 +71,24 @@ class Liens
     {
         $this->lien_desc = $lien_desc;
 
+        return $this;
+    }
+    public function getMotcles(): Collection
+    {
+        return $this->motcles;
+    }
+
+    public function addMotcle(Motcle $motcle): static
+    {
+        if (!$this->motcles->contains($motcle)) {
+            $this->motcles->add($motcle);
+        }
+        return $this;
+    }
+
+    public function removeMotcle(Motcle $motcle): static
+    {
+        $this->motcles->removeElement($motcle);
         return $this;
     }
 }

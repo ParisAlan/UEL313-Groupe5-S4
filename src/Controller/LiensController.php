@@ -78,4 +78,11 @@ final class LiensController extends AbstractController
 
         return $this->redirectToRoute('app_liens_index', [], Response::HTTP_SEE_OTHER);
     }
+    public function parTag(\App\Entity\Motcle $motcle): Response
+    {
+    return $this->render('liens/index.html.twig', [
+        'liens' => $motcle->getLiens(), 
+        'tag_actif' => $motcle,
+    ]);
+    }
 }
