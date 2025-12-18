@@ -15,6 +15,15 @@ class LiensRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Liens::class);
     }
+    public function findByMotcle($motcle): array
+    {
+        return $this->createQueryBuilder('l')
+            ->join('l.motcles', 'm')
+            ->where('m.id = :id')
+            ->setParameter('id', $motcle->getId())
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return Liens[] Returns an array of Liens objects

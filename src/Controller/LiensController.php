@@ -89,13 +89,15 @@ final class LiensController extends AbstractController
     }
     
     #[Route('/tag/{id}', name: 'app_liens_par_tag', methods: ['GET'])]
-    public function parTag(\App\Entity\Motcle $motcle): Response
+    public function parTag(\App\Entity\Motcle $motcle,LiensRepository $liensRepository): Response
     {
-    return $this->render('liens/index.html.twig', [
-        'liens' => $motcle->getLiens(), 
-        'tag_actif' => $motcle,
+        $liensFiltres = $liensRepository->findByMotcle($motcle);
+        return $this->render('liens/index.html.twig', [
+            'liens' => $liensFiltres, 
+            'tag_actif' => $motcle,
     ]);
     }
+
     private function gererNouveauTag(string $nom, Liens $lien, EntityManagerInterface $em): void
     {
         $tagExistant = $em->getRepository(Motcle::class)->findOneBy(['name' => $nom]);
