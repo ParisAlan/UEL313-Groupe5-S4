@@ -7,7 +7,7 @@
 
     {% if tag_actif is defined %}
         <h2>Résultats pour le tag : <span class="badge bg-info">#{{ tag_actif.name }}</span></h2>
-        <a href="{{ path('app_liens_index') }}" class="btn btn-sm btn-outline-secondary mb-3">Voir tous les liens</a>
+        <a href="{{ path('app_home') }}" class="btn btn-sm btn-outline-secondary mb-3">Voir tous les liens</a>
     {% endif %}
 
     <table class="table">
