@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Liens{% endblock %}
+{% block title %}Créer un nouveau lien{% endblock %}
 
 {% block body %}
-    <h1>Create new Liens</h1>
+<h1>Créer un nouveau lien</h1>
 
-    {{ include('liens/_form.html.twig') }}
+<div class="new-container">
+    {{ include('liens/_form.html.twig', {'button_label': 'Créer'}) }}
 
-    <a href="{{ path('app_liens_index') }}">back to list</a>
+    <div class="new-buttons">
+        <a href="{{ path('app_liens_index') }}" class="new-btn">Retour à la liste</a>
+    </div>
+</div>
 {% endblock %}

@@ -1,53 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Liens index{% endblock %}
 
 {% block body %}
-    <h1>Liens index</h1>
+<h1>Liens index</h1>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Lien_url</th>
-            <th>Lien_titre</th>
-            <th>Lien_desc</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for lien in liens %}
-            <tr>
-                <td>{{ lien.id }}</td>
-                <td>{{ lien.lienUrl }}</td>
-                <td>{{ lien.lienTitre }}</td>
-                <td>{{ lien.lienDesc }}</td>
-                <td>
-                    <a href="{{ path('app_liens_show', {'id': lien.id}) }}">show</a>
-                    <a href="{{ path('app_liens_edit', {'id': lien.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<div class="liens-grid">
+    {% for lien in liens %}
+        <div class="lien-card">
+            <h2 class="lien-title">{{ lien.lienTitre }}</h2>
+            <p class="lien-desc">{{ lien.lienDesc }}</p>
+            <a href="{{ lien.lienUrl }}" target="_blank" class="lien-link">Visiter le lien</a>
+            <div class="lien-actions">
+                <a href="{{ path('app_liens_show', {'id': lien.id}) }}" class="btn-action">Voir</a>
+                <a href="{{ path('app_liens_edit', {'id': lien.id}) }}" class="btn-action">Modifier</a>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun lien disponible.</p>
+    {% endfor %}
+</div>
 
-    <a href="{{ path('app_liens_new') }}">Create new</a>
+<a href="{{ path('app_liens_new') }}" class="btn-main">Créer un nouveau lien</a>
+<br><br>
 
-    <br><br>
+{% if is_granted('ROLE_USER') %}
+    <a href="{{ path('app_logout') }}" class="btn-main">Déconnexion</a>
+{% else %}
+    <a href="{{ path('app_login') }}" class="btn-main">Connexion</a>
+{% endif %}
 
-    {# Bouton vers la connexion visible seulement si pas connecté #}
-    {% if is_granted('ROLE_USER') %}
-        <a href="{{ path('app_logout') }}" class="btn btn-warning">Déconnexion</a>
-        {% else %}
-            <a href="{{ path('app_login') }}" class="btn btn-warning">Connexion</a>
-    {% endif %}
-
-    {# Bouton vers l’admin visible seulement si connecté et ROLE_ADMIN #}
-    {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_admin') }}" class="btn btn-warning">Administration</a>
-    {% endif %}
+{% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('app_admin') }}" class="btn-main">Administration</a>
+{% endif %}
 {% endblock %}
