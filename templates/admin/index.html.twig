@@ -6,7 +6,7 @@
     <body class="admin-page">
     <h1 class="admin-title">Liens index</h1>
 
-    <a class="btn-create admin-link" href="{{ path('app_liens_new') }}">Create new</a>
+    <a class="btn-create admin-link" href="{{ path('app_liens_new') }}">Nouveau</a>
     <br>
 
     <table class="admin-table">
@@ -41,7 +41,7 @@
 
     <h1 class="admin-title">User index</h1>
 
-    <a class="btn-create admin-link" href="{{ path('app_user_new') }}">Create new</a>
+    <a class="btn-create admin-link" href="{{ path('app_user_new') }}">Nouveau</a>
     <br>
 
     <table class="admin-table">
@@ -74,115 +74,10 @@
         </tbody>
     </table>
 
+    <br><br>
+    <br><br>
+    <br><br>
+
 </body>
-    <style>
-        body.admin-page {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        h1.admin-title {
-            text-align: center;
-            color: #444;
-            margin: 20px 0 10px 0;
-        }
-
-        a.admin-link {
-            color: #007bff;
-            text-decoration: none;
-            margin-right: 10px;
-        }
-
-        a.admin-link:hover {
-            text-decoration: underline;
-        }
-
-        a.btn-create {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 15px;
-            background-color: #e0e0e0;
-            color: #000;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a.btn-create:hover {
-            background-color: #2C3E50;
-            color: #fff;
-            transform: scale(1.05);
-            text-decoration: none;
-        }
-
-        table.admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        table.admin-table th.admin-th,
-        table.admin-table td.admin-td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table.admin-table th.admin-th {
-            background-color: #f1f1f1;
-            font-weight: 600;
-        }
-
-        table.admin-table tr.admin-row:hover {
-            background-color: #f9f9f9;
-        }
-
-        a.btn-show {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #e0e0e0;
-            color: #000;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a.btn-show:hover {
-            background-color: #2C3E50;
-            color: #fff;
-            transform: scale(1.05);
-            text-decoration: none;
-        }
-
-        a.btn-edit {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #e0e0e0;
-            color: #000;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        a.btn-edit:hover {
-            background-color: #2C3E50;
-            color: #fff;
-            transform: scale(1.05);
-            text-decoration: none;
-        }
-
-        td.no-records {
-            text-align: center;
-            font-style: italic;
-            color: #888;
-            padding: 20px 0;
-        }
-    </style>
-
 {% endblock %}
 

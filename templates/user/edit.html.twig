@@ -3,11 +3,14 @@
 {% block title %}Edit User{% endblock %}
 
 {% block body %}
-    <h1>Edit User</h1>
+<div class="edit-container">
+    <h1 style="padding-bottom: 25px;">Modifier l'utilisateur</h1>
 
     {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+    <div class="edit-buttons">
+        <a href="{{ path('app_user_index') }}" class="edit-btn">Retour à la liste</a>
+        {{ include('user/_delete_form.html.twig', { 'class': 'edit-delete-btn' }) }}
+    </div>
+</div>
 {% endblock %}
