@@ -131,7 +131,8 @@ html, body {
     margin-bottom: 15px;
 }
 
-.lien-link {
+.lien-link,
+.btn {
     display: inline-block;
     padding: 10px 15px;
     background-color: #f0f0f0; 
@@ -141,10 +142,12 @@ html, body {
     font-weight: bold;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
     margin-bottom: 15px;
+    border: none;
 }
 
-.lien-link:hover {
-    background-color: #576681;
+.lien-link:hover,
+.btn:hover {
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -184,7 +187,7 @@ a.btn-main {
 }
 
 a.btn-main:hover {
-    background-color: #7a9dc7; /* bleu un peu grisé */
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -245,7 +248,7 @@ a.btn-main:hover {
 }
 
 .lien-link:hover {
-    background-color: #576681; 
+    background-color: #576681;
     transform: scale(1.05);
 }
 
@@ -284,7 +287,7 @@ a.btn-main:hover {
 }
 
 .btn-main:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -372,7 +375,7 @@ a.btn-main:hover {
 }
 
 .show-btn:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -383,13 +386,13 @@ a.btn-main:hover {
 }
 
 .show-delete:hover {
-    background-color: #c53030;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
 
 .show-delete-btn {
-    padding: 10px 18px;
+    padding: 13px 18px;
     border-radius: 6px;
     font-weight: bold;
     background-color: #f56565;
@@ -397,20 +400,13 @@ a.btn-main:hover {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 16px;
 }
 
 .show-delete-btn:hover {
-    background-color: #c53030;
+    background-color: #2C3E50;
     transform: scale(1.05);
 }
-
-
-
-
-
-
-
-
 
 /* Container edit */
 .edit-container {
@@ -442,7 +438,7 @@ a.btn-main:hover {
 
 .edit-container input:focus,
 .edit-container textarea:focus {
-    border-color: #7a9dc7;
+    border-color: #2C3E50;
     box-shadow: 0 0 5px rgba(122,157,199,0.5);
     outline: none;
 }
@@ -459,7 +455,7 @@ a.btn-main:hover {
 }
 
 .edit-container button[type="submit"]:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -482,7 +478,7 @@ a.btn-main:hover {
 }
 
 .edit-btn:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -499,7 +495,7 @@ a.btn-main:hover {
 }
 
 .edit-delete-btn:hover {
-    background-color: #c53030;
+    background-color: #2C3E50;
     transform: scale(1.05);
 }
 
@@ -543,7 +539,7 @@ a.btn-main:hover {
 
 .new-container input:focus,
 .new-container textarea:focus {
-    border-color: #7a9dc7;
+    border-color: #2C3E50;
     box-shadow: 0 0 5px rgba(122,157,199,0.5);
     outline: none;
 }
@@ -560,7 +556,7 @@ a.btn-main:hover {
 }
 
 .new-container button[type="submit"]:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -582,7 +578,7 @@ a.btn-main:hover {
 }
 
 .new-btn:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
@@ -639,7 +635,7 @@ a.btn-main:hover {
 }
 
 .login-input:focus {
-    border-color: #7a9dc7;
+    border-color: #2C3E50;
     box-shadow: 0 0 5px rgba(122,157,199,0.5);
     outline: none;
 }
@@ -661,7 +657,7 @@ a.btn-main:hover {
 }
 
 .login-btn:hover {
-    background-color: #7a9dc7;
+    background-color: #2C3E50;
     color: #fff;
     transform: scale(1.05);
 }
