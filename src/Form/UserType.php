@@ -23,7 +23,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('password', PasswordType::class)
+            ->add('password', PasswordType::class) // Pour que ce soit en "***********"
         ;
     }
 }
