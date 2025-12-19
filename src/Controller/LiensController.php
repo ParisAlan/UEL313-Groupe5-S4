@@ -17,6 +17,9 @@ final class LiensController extends AbstractController
     #[Route(name: 'app_liens_index', methods: ['GET'])]
     public function index(LiensRepository $liensRepository): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('liens/index.html.twig', [
             'liens' => $liensRepository->findAll(),
         ]);
@@ -25,6 +28,9 @@ final class LiensController extends AbstractController
     #[Route('/new', name: 'app_liens_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $lien = new Liens();
         $form = $this->createForm(LiensType::class, $lien);
         $form->handleRequest($request);
@@ -45,6 +51,9 @@ final class LiensController extends AbstractController
     #[Route('/{id}', name: 'app_liens_show', methods: ['GET'])]
     public function show(Liens $lien): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('liens/show.html.twig', [
             'lien' => $lien,
         ]);
@@ -53,6 +62,9 @@ final class LiensController extends AbstractController
     #[Route('/{id}/edit', name: 'app_liens_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Liens $lien, EntityManagerInterface $entityManager): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(LiensType::class, $lien);
         $form->handleRequest($request);
 
@@ -71,6 +83,9 @@ final class LiensController extends AbstractController
     #[Route('/{id}', name: 'app_liens_delete', methods: ['POST'])]
     public function delete(Request $request, Liens $lien, EntityManagerInterface $entityManager): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$lien->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($lien);
             $entityManager->flush();

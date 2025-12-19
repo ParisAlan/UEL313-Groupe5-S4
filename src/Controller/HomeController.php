@@ -17,12 +17,4 @@ final class HomeController extends AbstractController
         ]);
     }
 
-//    #[Route('/',name: 'app_liens_index', methods: ['GET'])]
-//    public function index(LiensRepository $liensRepository): Response
-//    {
-//        return $this->render('home/index.html.twig', [
-//            'liens' => $liensRepository->findAll(),
-//        ]);
-//    }
-
 }
