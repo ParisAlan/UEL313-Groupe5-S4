@@ -3,18 +3,137 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <body class="admin-page">
+    <h1 class="admin-title">Liens index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <a class="btn-create admin-link" href="{{ path('app_liens_new') }}">Create new</a>
+    <br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/alanp/Documents/Symfony/Watson/src/Controller/AdminController.php</code></li>
-        <li>Your template at <code>C:/Users/alanp/Documents/Symfony/Watson/templates/admin/index.html.twig</code></li>
-    </ul>
-</div>
+    <table class="admin-table">
+        <thead>
+        <tr>
+            <th class="admin-th">Id</th>
+            <th class="admin-th">Lien_url</th>
+            <th class="admin-th">Lien_titre</th>
+            <th class="admin-th">Lien_desc</th>
+            <th class="admin-th">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for lien in liens %}
+            <tr class="admin-row">
+                <td class="admin-td">{{ lien.id }}</td>
+                <td class="admin-td">{{ lien.lienUrl }}</td>
+                <td class="admin-td">{{ lien.lienTitre }}</td>
+                <td class="admin-td">{{ lien.lienDesc }}</td>
+                <td class="admin-td">
+                    <a class="btn-show" href="{{ path('app_liens_show', {'id': lien.id}) }}">Montrer</a>
+                    <a class="btn-edit" href="{{ path('app_liens_edit', {'id': lien.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td class="no-records" colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+    <style>
+        body.admin-page {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1.admin-title {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+
+        a.admin-link {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        a.admin-link:hover {
+            text-decoration: underline;
+        }
+
+        a.btn-create {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background-color: red;
+            color: #fff !important;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a.btn-create:hover {
+            background-color: darkred;
+            text-decoration: none;
+        }
+
+        table.admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        table.admin-table th.admin-th,
+        table.admin-table td.admin-td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table.admin-table th.admin-th {
+            background-color: #f1f1f1;
+            font-weight: 600;
+        }
+
+        table.admin-table tr.admin-row:hover {
+            background-color: #f9f9f9;
+        }
+
+        a.btn-show {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: dodgerblue;
+            color: #fff !important;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        a.btn-show:hover {
+            background-color: #138496;
+        }
+
+        a.btn-edit {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: darkgoldenrod;
+            color: #fff !important;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        a.btn-edit:hover {
+            background-color: #e0a800;
+        }
+
+        td.no-records {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            padding: 20px 0;
+        }
+    </style>
+
 {% endblock %}
