@@ -51,6 +51,16 @@ html, body {
     color: #e67e22;
 }
 
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar img {
+    padding-right: 2rem;
+    width: 75%;
+}
+
 /* main */
 .site-main {
     flex: 1;

@@ -18,6 +18,9 @@ final class UserController extends AbstractController
     #[Route(name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
@@ -25,7 +28,11 @@ final class UserController extends AbstractController
 
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response {
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
+    {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -59,6 +66,9 @@ final class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
@@ -67,6 +77,9 @@ final class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
@@ -98,6 +111,9 @@ final class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
+        // Sécurité : uniquement admin
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();

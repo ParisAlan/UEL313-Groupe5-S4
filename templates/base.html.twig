@@ -12,18 +12,23 @@
         <!-- Header -->
         <header class="site-header">
             <div class="container">
-                <nav>
-                    <ul>
-                        <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li><a href="{{ path('app_admin') }}">Administration</a></li>
-                        {% endif %}
-                        {% if is_granted('ROLE_USER') %}
-                            <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
-                        {% else %}
-                            <li><a href="{{ path('app_login') }}">Connexion</a></li>
-                        {% endif %}
-                    </ul>
+                <nav class="navbar">
+                    <a href="{{ path('app_home') }}">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="imgwatson">
+                    </a>
+
+                    <div>
+                        <ul>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a href="{{ path('app_admin') }}">Administration</a></li>
+                            {% endif %}
+                            {% if is_granted('ROLE_USER') %}
+                                <li><a href="{{ path('app_logout') }}">Déconnexion</a></li>
+                            {% else %}
+                                <li><a href="{{ path('app_login') }}">Connexion</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
                 </nav>
             </div>
         </header>
