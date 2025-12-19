@@ -13,9 +13,9 @@
         <thead>
         <tr>
             <th class="admin-th">Id</th>
-            <th class="admin-th">Lien_url</th>
-            <th class="admin-th">Lien_titre</th>
-            <th class="admin-th">Lien_desc</th>
+            <th class="admin-th">URL</th>
+            <th class="admin-th">Titre</th>
+            <th class="admin-th">Description</th>
             <th class="admin-th">Actions</th>
         </tr>
         </thead>
@@ -39,37 +39,41 @@
         </tbody>
     </table>
 
-    <h1>User index</h1>
+    <h1 class="admin-title">User index</h1>
 
-    <table class="table">
+    <a class="btn-create admin-link" href="{{ path('app_user_new') }}">Create new</a>
+    <br>
+
+    <table class="admin-table">
         <thead>
         <tr>
-            <th>Id</th>
-            <th>Username</th>
-            <th>Roles</th>
-            <th>Password</th>
-            <th>actions</th>
+            <th class="admin-th">Id</th>
+            <th class="admin-th">Username</th>
+            <th class="admin-th">Roles</th>
+            <th class="admin-th">Password</th>
+            <th class="admin-th">Actions</th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
-                <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+            <tr class="admin-row">
+                <td class="admin-td">{{ user.id }}</td>
+                <td class="admin-td">{{ user.username }}</td>
+                <td class="admin-td">{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td class="admin-td">{{ user.password }}</td>
+                <td class="admin-td">
+                    <a class="btn-show" href="{{ path('app_user_show', {'id': user.id}) }}">Montrer</a>
+                    <a class="btn-edit" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td class="no-records" colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
 </body>
     <style>
         body.admin-page {
@@ -81,7 +85,7 @@
         h1.admin-title {
             text-align: center;
             color: #444;
-            margin-bottom: 30px;
+            margin: 20px 0 10px 0;
         }
 
         a.admin-link {
@@ -98,14 +102,18 @@
             display: inline-block;
             margin-bottom: 20px;
             padding: 8px 15px;
-            background-color: red;
-            color: #fff !important;
+            background-color: #e0e0e0;
+            color: #000;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         a.btn-create:hover {
-            background-color: darkred;
+            background-color: #2C3E50;
+            color: #fff;
+            transform: scale(1.05);
             text-decoration: none;
         }
 
@@ -135,29 +143,37 @@
         a.btn-show {
             display: inline-block;
             padding: 8px 15px;
-            background-color: dodgerblue;
-            color: #fff !important;
+            background-color: #e0e0e0;
+            color: #000;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            font-weight: bold;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         a.btn-show:hover {
-            background-color: #138496;
+            background-color: #2C3E50;
+            color: #fff;
+            transform: scale(1.05);
+            text-decoration: none;
         }
 
         a.btn-edit {
             display: inline-block;
             padding: 8px 15px;
-            background-color: darkgoldenrod;
-            color: #fff !important;
+            background-color: #e0e0e0;
+            color: #000;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            font-weight: bold;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         a.btn-edit:hover {
-            background-color: #e0a800;
+            background-color: #2C3E50;
+            color: #fff;
+            transform: scale(1.05);
+            text-decoration: none;
         }
 
         td.no-records {

@@ -386,7 +386,7 @@ a.btn-main:hover {
 }
 
 .show-delete:hover {
-    background-color: #2C3E50;
+    background-color: red;
     color: #fff;
     transform: scale(1.05);
 }
@@ -404,7 +404,7 @@ a.btn-main:hover {
 }
 
 .show-delete-btn:hover {
-    background-color: #2C3E50;
+    background-color: red;
     transform: scale(1.05);
 }
 
@@ -495,7 +495,7 @@ a.btn-main:hover {
 }
 
 .edit-delete-btn:hover {
-    background-color: #2C3E50;
+    background-color: red;
     transform: scale(1.05);
 }
 
