@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\LiensRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,16 +11,17 @@ use Symfony\Component\Routing\Attribute\Route;
 final class AdminController extends AbstractController
 {
 
-    #[Route('/admin',name: 'app_admin', methods: ['GET'])]
-    public function index(LiensRepository $liensRepository): Response
+    #[Route('/admin', name: 'app_admin', methods: ['GET'])]
+    public function index(LiensRepository $liensRepository, UserRepository $userRepository): Response
     {
-        // Sécurité : uniquement admin
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
         return $this->render('admin/index.html.twig', [
             'liens' => $liensRepository->findAll(),
+            'users' => $userRepository->findAll(),
         ]);
     }
+
     // Ce qui était écrit avant :
 //    #[Route('/admin', name: 'app_admin')]
 //    public function test(): Response
